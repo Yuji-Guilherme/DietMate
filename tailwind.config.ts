@@ -10,8 +10,22 @@ const config: Config = {
   ],
   theme: {
     colors: {
+      'new-orange': '#FE9400',
+      'primary-blue': '#031818',
+      'secondary-blue': '#072C2C',
       'light-yellow': '#FFF2B0',
+      'medium-yellow': '#F6EBB7',
       ...colors
+    },
+    borderWidth: {
+      '1': '1px',
+      '3': '3px'
+    },
+    screens: {
+      sm: { min: '0px', max: '450px' },
+      tablet: { min: '451px', max: '768px' },
+      'md-': { min: '769px', max: '1024px' },
+      md: { min: '451px', max: '1024px' }
     },
     extend: {}
   },

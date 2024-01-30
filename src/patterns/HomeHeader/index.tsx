@@ -1,24 +1,25 @@
 import { Bitter } from 'next/font/google';
 import Image from 'next/image';
 import Link from 'next/link';
+import * as S from './style';
 
 const bitter = Bitter({ subsets: ['latin'] });
 
 function HomeHeader() {
   return (
-    <header className="px-12 py-9 flex justify-between">
+    <S.Header>
       <Link href="">
-        <div className="flex gap-4 items-center">
+        <S.LogoWrapper>
           <Image src="/logo.svg" alt="logo" width={40} height={40} />
-          <p className={`${bitter.className} font-bold text-lg`}>Diet Mate</p>
-        </div>
+          <S.LogoText className={bitter.className}>Diet Mate</S.LogoText>
+        </S.LogoWrapper>
       </Link>
-      <nav className="flex items-center gap-3">
-        <div className="h-8 flex items-center border-solid border-slate-600 border-r pr-3">
-          <Link className="text-slate-600" href="/dashboard">
+      <S.Nav>
+        <S.NavLinkWrapper>
+          <Link className={S.VisitLinkClassName} href="/dashboard">
             visitante
           </Link>
-        </div>
+        </S.NavLinkWrapper>
         <Link href="https://github.com/Yuji-Guilherme/DietMate" target="_blank">
           <Image
             src="/icons/github-mark.svg"
@@ -27,8 +28,8 @@ function HomeHeader() {
             height={32}
           />
         </Link>
-      </nav>
-    </header>
+      </S.Nav>
+    </S.Header>
   );
 }
 
