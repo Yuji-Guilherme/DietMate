@@ -10,6 +10,7 @@ const config: Config = {
   ],
   theme: {
     colors: {
+      'off-white': '#F9F8D0',
       'new-orange': '#FE9400',
       'primary-blue': '#031818',
       'secondary-blue': '#072C2C',

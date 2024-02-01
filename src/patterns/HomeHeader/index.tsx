@@ -1,18 +1,14 @@
-import { Bitter } from 'next/font/google';
 import Image from 'next/image';
 import Link from 'next/link';
-import * as S from './style';
+import { Logo } from '@/components/Logo';
 
-const bitter = Bitter({ subsets: ['latin'] });
+import * as S from './style';
 
 function HomeHeader() {
   return (
     <S.Header>
       <Link href="">
-        <S.LogoWrapper>
-          <Image src="/logo.svg" alt="logo" width={40} height={40} />
-          <S.LogoText className={bitter.className}>Diet Mate</S.LogoText>
-        </S.LogoWrapper>
+        <Logo type="sm" />
       </Link>
       <S.Nav>
         <S.NavLinkWrapper>

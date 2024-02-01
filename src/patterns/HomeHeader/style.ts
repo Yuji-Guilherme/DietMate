@@ -5,19 +5,7 @@ const Header = tw.header`
   py-9
   flex
   justify-between
-  sm: px-8
-`;
-
-const LogoWrapper = tw.div`
-  flex
-  gap-4
-  items-center
-`;
-
-const LogoText = tw.p`
-  font-bold
-  text-lg
-  text-primary-blue
+  sm:px-8
 `;
 
 const Nav = tw.nav`
@@ -38,11 +26,4 @@ const NavLinkWrapper = tw.div`
 
 const VisitLinkClassName = 'text-slate-600 hover:decoration-1 hover:underline';
 
-export {
-  Header,
-  LogoWrapper,
-  LogoText,
-  Nav,
-  NavLinkWrapper,
-  VisitLinkClassName
-};
+export { Header, Nav, NavLinkWrapper, VisitLinkClassName };

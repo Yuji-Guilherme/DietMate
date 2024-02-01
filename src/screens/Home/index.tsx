@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+
 import * as S from './style';
 
 function Home() {
@@ -16,10 +17,10 @@ function Home() {
             objetivos.
           </S.Subtitle>
           <S.ButtonWrapper>
-            <Link href="/register" className={S.PrimaryButtonClassName}>
+            <Link href="/register" className={S.primaryButtonClassName}>
               Cadastre-se
             </Link>
-            <Link href="/login" className={S.SecondButtonClassName}>
+            <Link href="/login" className={S.secondButtonClassName}>
               Entrar
             </Link>
           </S.ButtonWrapper>
@@ -30,7 +31,7 @@ function Home() {
             alt="foto de um prato saudável"
             width={520}
             height={520}
-            className={S.MainImageClassName}
+            className={S.mainImageClassName}
           />
         </S.MainImageWrapper>
       </S.FirstSection>
@@ -41,7 +42,7 @@ function Home() {
             alt="imagem de um frango assado"
             width={400}
             height={400}
-            className={S.SecondImageClassName}
+            className={S.secondImageClassName}
           />
         </S.SecondImageWrapper>
         <S.SecondTextWrapper>
