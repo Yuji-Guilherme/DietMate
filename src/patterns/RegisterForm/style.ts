@@ -54,11 +54,13 @@ const RegisterButton = tw.button`
   rounded-lg
   hover:bg-secondary-blue
   hover:text-zinc-100
+  focus:bg-secondary-blue
+  focus:text-zinc-100
   transition-colors
 `;
 
 const loginLinkClassName =
-  'text-sm text-sky-500 hover:text-sky-600 transition-colors';
+  'text-sm text-sky-500 hover:text-sky-600 transition-colors focus:outline-1 focus:outline-sky-200';
 
 export {
   Form,

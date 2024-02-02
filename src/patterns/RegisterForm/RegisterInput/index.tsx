@@ -21,7 +21,7 @@ const RegisterInput = forwardRef<HTMLInputElement, RegisterInputProps>(
     return (
       <>
         <Input.Label htmlFor={inputId}>{label}</Input.Label>
-        <Input.Wrapper hasError={hasError}>
+        <Input.Wrapper tabIndex={-1} hasError={hasError}>
           <Input.Button type={buttonType} onClick={handleChangeInputType} />
           <Input.Component id={inputId} type={inputType} ref={ref} {...props} />
           {hasError && <Input.ErrorIcon />}

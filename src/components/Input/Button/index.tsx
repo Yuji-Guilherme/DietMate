@@ -21,7 +21,11 @@ function InputButton({ type, onClick }: InputButtonProps) {
       </div>
     ),
     eye: (
-      <button className={S.iconWrapperClassName} onClick={onClick}>
+      <button
+        tabIndex={-1}
+        className={S.iconWrapperClassName}
+        onClick={onClick}
+      >
         <EyeIcon
           svgClassName={S.svgIconClassName}
           pathClassName={S.pathIconClassName}

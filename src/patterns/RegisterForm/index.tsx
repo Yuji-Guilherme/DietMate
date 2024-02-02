@@ -45,7 +45,7 @@ function RegisterForm() {
       </S.FieldsWrapper>
       <S.ButtonWrapper>
         <S.RegisterButton type="submit">Cadastrar</S.RegisterButton>
-        <Link href="/login" className={S.loginLinkClassName}>
+        <Link href="/login" tabIndex={0} className={S.loginLinkClassName}>
           Já tem uma conta?
         </Link>
       </S.ButtonWrapper>
