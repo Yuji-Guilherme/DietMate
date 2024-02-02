@@ -6,7 +6,7 @@ const useRegisterForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors }
+    formState: { errors, touchedFields }
   } = useForm<FormProps>({
     mode: 'onBlur',
     resolver: zodResolver(schema)
@@ -15,7 +15,8 @@ const useRegisterForm = () => {
   return {
     register,
     handleSubmit,
-    errors
+    errors,
+    touchedFields
   };
 };
 

@@ -7,7 +7,7 @@ import { useRegisterForm } from './hook';
 import * as S from './style';
 
 function RegisterForm() {
-  const { register, handleSubmit, errors } = useRegisterForm();
+  const { register, handleSubmit, errors, touchedFields } = useRegisterForm();
 
   return (
     <S.Form onSubmit={handleSubmit((data) => console.log(data))}>
@@ -19,6 +19,7 @@ function RegisterForm() {
             label="Nome de usuário"
             errorText={errors.username?.message}
             buttonType="user"
+            touched={touchedFields.username}
             {...register('username')}
           />
         </S.Field>
@@ -29,6 +30,7 @@ function RegisterForm() {
             label="Nova senha"
             errorText={errors.password?.message}
             buttonType="eye"
+            touched={touchedFields.password}
             {...register('password')}
           />
         </S.Field>
@@ -39,6 +41,7 @@ function RegisterForm() {
             label="Confirmar senha"
             errorText={errors.confirmPassword?.message}
             buttonType="eye"
+            touched={touchedFields.confirmPassword}
             {...register('confirmPassword')}
           />
         </S.Field>

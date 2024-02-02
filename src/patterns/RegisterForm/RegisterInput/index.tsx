@@ -7,24 +7,27 @@ import { useRegisterInput } from '../hook';
 type RegisterInputProps = {
   label: string;
   errorText: string | undefined;
+  touched: boolean | undefined;
   buttonType: InputButtonType;
 } & InputHTMLAttributes<HTMLInputElement>;
 
 const RegisterInput = forwardRef<HTMLInputElement, RegisterInputProps>(
-  ({ label, errorText, buttonType, type = 'text', ...props }, ref) => {
+  ({ label, errorText, touched, buttonType, type = 'text', ...props }, ref) => {
     const { inputId, inputType, handleChangeInputType } = useRegisterInput({
       type
     });
 
     const hasError = !!errorText;
+    const isCorrectly = !hasError && !!touched;
 
     return (
       <>
         <Input.Label htmlFor={inputId}>{label}</Input.Label>
-        <Input.Wrapper tabIndex={-1} hasError={hasError}>
+        <Input.Wrapper tabIndex={-1} isValid={isCorrectly} hasError={hasError}>
           <Input.Button type={buttonType} onClick={handleChangeInputType} />
           <Input.Component id={inputId} type={inputType} ref={ref} {...props} />
           {hasError && <Input.ErrorIcon />}
+          {isCorrectly && <Input.CorrectIcon />}
         </Input.Wrapper>
         {hasError && <Input.ErrorMessage>{errorText}</Input.ErrorMessage>}
       </>

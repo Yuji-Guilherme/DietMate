@@ -1,5 +1,5 @@
 import { MouseEvent } from 'react';
-import { UserIcon, EyeIcon } from '../Icon';
+import { UserIcon, EyeIcon } from './Icon';
 
 import * as S from './style';
 
