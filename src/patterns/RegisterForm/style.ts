@@ -8,6 +8,7 @@ const Form = tw.form`
   flex-col
   rounded-[40px]
   mt-8
+  mb-12
 `;
 
 const Title = tw.p`

@@ -1,20 +1,19 @@
 import { useId, useState, MouseEvent, HTMLInputTypeAttribute } from 'react';
 
-type UseInputProps = { type: HTMLInputTypeAttribute };
+type UseRegisterInputProps = { type: HTMLInputTypeAttribute };
 
-const useInput = ({ type }: UseInputProps) => {
+const useRegisterInput = ({ type }: UseRegisterInputProps) => {
   const inputId = useId();
   const [typeState, setType] = useState<HTMLInputTypeAttribute>('');
 
   const inputType = typeState || type;
-  const iconType: 'eye' | 'user' = type === 'password' ? 'eye' : 'user';
 
-  const handleButtonClick = (e: MouseEvent) => {
+  const handleChangeInputType = (e: MouseEvent) => {
     e.preventDefault();
     setType((prev) => (prev === 'password' ? 'text' : 'password'));
   };
 
-  return { inputId, iconType, inputType, handleButtonClick };
+  return { inputId, inputType, handleChangeInputType };
 };
 
-export { useInput };
+export { useRegisterInput };

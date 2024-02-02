@@ -6,6 +6,7 @@ const Label = tw.label`
   w-fit
   text-slate-600
   font-medium
+  cursor-pointer
 `;
 
 const InputWrapper = tw.div<StyledInputProps>`

@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Input } from '@/components/Input';
+import { RegisterInput } from './RegisterInput';
 import { useRegisterForm } from './hook';
 
 import * as S from './style';
@@ -14,29 +14,32 @@ function RegisterForm() {
       <S.Title>Crie uma nova conta</S.Title>
       <S.FieldsWrapper>
         <S.Field>
-          <Input
-            {...register('username')}
-            label="Nome de usuário"
+          <RegisterInput
             placeholder="digite um nome de usuário"
-            errorMessage={errors.username?.message}
+            label="Nome de usuário"
+            errorText={errors.username?.message}
+            buttonType="user"
+            {...register('username')}
           />
         </S.Field>
         <S.Field>
-          <Input
-            {...register('password')}
-            label="Nova senha"
+          <RegisterInput
+            type="password"
             placeholder="digite uma senha"
-            type="password"
-            errorMessage={errors.password?.message}
+            label="Nova senha"
+            errorText={errors.password?.message}
+            buttonType="eye"
+            {...register('password')}
           />
         </S.Field>
         <S.Field>
-          <Input
-            {...register('confirmPassword')}
-            label="Confirmar senha"
-            placeholder="confirme sua senha"
+          <RegisterInput
             type="password"
-            errorMessage={errors.confirmPassword?.message}
+            placeholder="confirme sua senha"
+            label="Confirmar senha"
+            errorText={errors.confirmPassword?.message}
+            buttonType="eye"
+            {...register('confirmPassword')}
           />
         </S.Field>
       </S.FieldsWrapper>

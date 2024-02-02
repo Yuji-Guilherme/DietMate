@@ -3,8 +3,10 @@ import { UserIcon, EyeIcon } from '../Icon';
 
 import * as S from './style';
 
+type InputButtonType = 'user' | 'eye';
+
 type InputButtonProps = {
-  type: 'user' | 'eye';
+  type: InputButtonType;
   onClick?: (e: MouseEvent) => void;
 };
 
@@ -32,3 +34,4 @@ function InputButton({ type, onClick }: InputButtonProps) {
 }
 
 export { InputButton };
+export type { InputButtonType };
