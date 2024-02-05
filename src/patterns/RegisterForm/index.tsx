@@ -3,17 +3,17 @@
 import Link from 'next/link';
 import { RegisterInput } from './RegisterInput';
 import { useRegisterForm } from './hook';
-
-import * as S from './style';
+import { Form } from '@/components/Form';
+import { FormButton, formButtonClassName } from '@/components/Button';
 
 function RegisterForm() {
   const { register, handleSubmit, errors, touchedFields } = useRegisterForm();
 
   return (
-    <S.Form onSubmit={handleSubmit((data) => console.log(data))}>
-      <S.Title>Crie uma nova conta</S.Title>
-      <S.FieldsWrapper>
-        <S.Field>
+    <Form.Root onSubmit={handleSubmit((data) => console.log(data))}>
+      <Form.Title>Crie uma nova conta</Form.Title>
+      <Form.FieldWrapper>
+        <Form.Field>
           <RegisterInput
             placeholder="digite um nome de usuário"
             label="Nome de usuário"
@@ -22,8 +22,8 @@ function RegisterForm() {
             touched={touchedFields.username}
             {...register('username')}
           />
-        </S.Field>
-        <S.Field>
+        </Form.Field>
+        <Form.Field>
           <RegisterInput
             type="password"
             placeholder="digite uma senha"
@@ -33,8 +33,8 @@ function RegisterForm() {
             touched={touchedFields.password}
             {...register('password')}
           />
-        </S.Field>
-        <S.Field>
+        </Form.Field>
+        <Form.Field>
           <RegisterInput
             type="password"
             placeholder="confirme sua senha"
@@ -44,15 +44,19 @@ function RegisterForm() {
             touched={touchedFields.confirmPassword}
             {...register('confirmPassword')}
           />
-        </S.Field>
-      </S.FieldsWrapper>
-      <S.ButtonWrapper>
-        <S.RegisterButton type="submit">Cadastrar</S.RegisterButton>
-        <Link href="/login" tabIndex={0} className={S.loginLinkClassName}>
+        </Form.Field>
+      </Form.FieldWrapper>
+      <Form.ButtonWrapper>
+        <FormButton.blue type="submit">Cadastrar</FormButton.blue>
+        <Link
+          className={formButtonClassName.noBgBlue}
+          href="/login"
+          tabIndex={0}
+        >
           Já tem uma conta?
         </Link>
-      </S.ButtonWrapper>
-    </S.Form>
+      </Form.ButtonWrapper>
+    </Form.Root>
   );
 }
 

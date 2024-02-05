@@ -5,22 +5,21 @@ import {
   RegisterFormProps as FormProps
 } from '@/schemas/registerSchema';
 
-const useRegisterForm = () => {
+const useLoginForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, touchedFields }
+    formState: { errors }
   } = useForm<FormProps>({
-    mode: 'onBlur',
+    mode: 'onSubmit',
     resolver: zodResolver(schema)
   });
 
   return {
     register,
     handleSubmit,
-    errors,
-    touchedFields
+    errors
   };
 };
 
-export { useRegisterForm };
+export { useLoginForm };

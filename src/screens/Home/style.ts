@@ -105,13 +105,6 @@ const ButtonWrapper = tw.div`
   sm:mt-12
 `;
 
-const buttonBaseClassName =
-  'w-48 h-14 flex items-center justify-center rounded-[20px] font-semibold transition-colors';
-
-const primaryButtonClassName = `${buttonBaseClassName} bg-primary-blue text-white hover:bg-secondary-blue hover:text-zinc-100  sm:w-full sm:h-[60px]`;
-
-const secondButtonClassName = `${buttonBaseClassName} bg-transparent text-primary-blue border-solid border-primary-blue border-3 hover:bg-primary-blue hover:text-zinc-100 sm:w-full sm:h-[60px]`;
-
 const mainImageClassName =
   'rounded-[60px] md:w-full md:h-full sm:rounded-[36px]';
 
@@ -152,8 +145,6 @@ export {
   SecondTitle,
   SecondSubtitle,
   ButtonWrapper,
-  primaryButtonClassName,
-  secondButtonClassName,
   mainImageClassName,
   MainImageWrapper,
   SecondImageWrapper,

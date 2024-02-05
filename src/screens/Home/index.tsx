@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { buttonClassName } from '@/components/Button';
 
 import * as S from './style';
 
@@ -17,10 +18,10 @@ function Home() {
             objetivos.
           </S.Subtitle>
           <S.ButtonWrapper>
-            <Link href="/register" className={S.primaryButtonClassName}>
+            <Link href="/register" className={buttonClassName.md}>
               Cadastre-se
             </Link>
-            <Link href="/login" className={S.secondButtonClassName}>
+            <Link href="/login" className={buttonClassName['mdOutlined']}>
               Entrar
             </Link>
           </S.ButtonWrapper>

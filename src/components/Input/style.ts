@@ -1,6 +1,6 @@
 import tw from 'tailwind-styled-components';
 
-type StyledInputProps = { hasError: boolean; isValid: boolean };
+type StyledInputProps = { hasError?: boolean; isValid?: boolean };
 
 const Label = tw.label`
   w-fit

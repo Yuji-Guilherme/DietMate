@@ -23,7 +23,7 @@ const registerSchema = z
     confirmPassword: fields.confirmPassword
   }));
 
-type FormProps = z.infer<typeof registerSchema>;
+type RegisterFormProps = z.infer<typeof registerSchema>;
 
 export { registerSchema };
-export type { FormProps };
+export type { RegisterFormProps };
