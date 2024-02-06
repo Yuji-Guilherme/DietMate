@@ -20,7 +20,8 @@ const config: Config = {
     },
     borderWidth: {
       '1': '1px',
-      '3': '3px'
+      '3': '3px',
+      '8': '8px'
     },
     screens: {
       sm: { min: '0px', max: '450px' },

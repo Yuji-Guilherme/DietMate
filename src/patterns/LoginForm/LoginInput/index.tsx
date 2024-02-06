@@ -11,7 +11,7 @@ type LoginInputProps = {
 } & InputHTMLAttributes<HTMLInputElement>;
 
 const LoginInput = forwardRef<HTMLInputElement, LoginInputProps>(
-  ({ label, errorText, buttonType, type = 'text', ...props }, ref) => {
+  ({ label, errorText, buttonType, type = 'text', ...rest }, ref) => {
     const { inputId, inputType, handleChangeInputType } = useLoginInput({
       type
     });
@@ -23,7 +23,7 @@ const LoginInput = forwardRef<HTMLInputElement, LoginInputProps>(
         <Input.Label htmlFor={inputId}>{label}</Input.Label>
         <Input.Wrapper tabIndex={-1} hasError={hasError}>
           <Input.Button type={buttonType} onClick={handleChangeInputType} />
-          <Input.Component id={inputId} type={inputType} ref={ref} {...props} />
+          <Input.Component id={inputId} type={inputType} ref={ref} {...rest} />
         </Input.Wrapper>
         {hasError && <Input.ErrorMessage>{errorText}</Input.ErrorMessage>}
       </>

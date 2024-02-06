@@ -5,12 +5,14 @@ import * as S from './style';
 
 const bitter = Bitter({ subsets: ['latin'] });
 
+type LogoType = 'sm' | 'lg' | 'aside';
+
 type LogoProps = {
-  type: 'sm' | 'lg';
+  type: LogoType;
 };
 
 function Logo({ type }: LogoProps) {
-  const components = {
+  const components: Record<LogoType, JSX.Element> = {
     sm: (
       <S.LogoSmWrapper>
         <Image src="/logo.svg" alt="logo" width={40} height={40} />
@@ -22,6 +24,14 @@ function Logo({ type }: LogoProps) {
         <S.LogoLgText className={bitter.className}>Diet Mate</S.LogoLgText>
         <Image src="/logo.svg" alt="logo" width={50} height={50} />
       </S.LogoLgWrapper>
+    ),
+    aside: (
+      <S.LogoAsideWrapper>
+        <Image src="/logo.svg" alt="logo" width={40} height={40} />
+        <S.LogoAsideText className={bitter.className}>
+          Diet Mate
+        </S.LogoAsideText>
+      </S.LogoAsideWrapper>
     )
   };
 

@@ -5,7 +5,7 @@ type UserIconProps = {
   pathClassName: string;
 } & SVGAttributes<SVGElement>;
 
-function UserIcon({ svgClassName, pathClassName, ...props }: UserIconProps) {
+function UserIcon({ svgClassName, pathClassName, ...rest }: UserIconProps) {
   return (
     <svg
       width="1.089448mm"
@@ -15,7 +15,7 @@ function UserIcon({ svgClassName, pathClassName, ...props }: UserIconProps) {
       id="svg1"
       xmlSpace="preserve"
       className={svgClassName}
-      {...props}
+      {...rest}
     >
       <defs id="defs1" />
       <g id="layer2" transform="translate(-23.346727,-16.140781)">

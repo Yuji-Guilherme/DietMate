@@ -26,4 +26,21 @@ const LogoLgText = tw(LogoText)`
   text-4xl
 `;
 
-export { LogoSmWrapper, LogoSmText, LogoLgWrapper, LogoLgText };
+const LogoAsideWrapper = tw(LogoWrapper)`
+  gap-2
+`;
+
+const LogoAsideText = tw(LogoText)`
+  text-off-white
+  text-base
+  max-w-10
+`;
+
+export {
+  LogoSmWrapper,
+  LogoSmText,
+  LogoLgWrapper,
+  LogoLgText,
+  LogoAsideWrapper,
+  LogoAsideText
+};
