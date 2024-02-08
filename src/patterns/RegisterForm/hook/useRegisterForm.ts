@@ -1,18 +1,10 @@
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import {
-  registerSchema as schema,
-  RegisterFormProps as FormProps
-} from '@/schemas/registerSchema';
+import { useCustomForm } from '@/hook/useCustomForm';
+import { registerSchema as schema } from '@/schemas/registerSchema';
 
 const useRegisterForm = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, touchedFields }
-  } = useForm<FormProps>({
-    mode: 'onBlur',
-    resolver: zodResolver(schema)
+  const { register, handleSubmit, errors, touchedFields } = useCustomForm({
+    schema,
+    mode: 'onBlur'
   });
 
   return {

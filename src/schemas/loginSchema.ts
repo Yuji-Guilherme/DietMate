@@ -5,7 +5,4 @@ const loginSchema = z.object({
   password: z.string()
 });
 
-type LoginFormProps = z.infer<typeof loginSchema>;
-
 export { loginSchema };
-export type { LoginFormProps };
