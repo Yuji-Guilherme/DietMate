@@ -1,6 +1,10 @@
+import { HTMLFactory } from 'react';
 import tw from 'tailwind-styled-components';
 
-type StyledInputProps = { hasError?: boolean; isValid?: boolean };
+type StyledInputWrapperProps = {
+  hasError?: boolean;
+  isValid?: boolean;
+} & HTMLFactory<HTMLDivElement>;
 
 const Label = tw.label`
   w-fit
@@ -9,7 +13,7 @@ const Label = tw.label`
   cursor-pointer
 `;
 
-const InputWrapper = tw.div<StyledInputProps>`
+const InputWrapper = tw.div<StyledInputWrapperProps>`
   bg-amber-50
   w-full
   h-9
@@ -17,12 +21,16 @@ const InputWrapper = tw.div<StyledInputProps>`
   items-center
   px-2
   rounded-lg
+  hover:outline
+  hover:outline-1
+  hover:outline-slate-600
   focus-within:outline
   focus-within:outline-2
   focus-within:outline-slate-600
-  ${(p) => p.hasError && 'outline outline-red-500 outline-1'}
-  ${(p) => p.isValid && 'outline outline-emerald-500 outline-1'}
+  ${(p) => (p.hasError ? 'outline outline-red-500 outline-1' : '')}
+  ${(p) => (p.isValid ? 'outline outline-emerald-500 outline-1' : '')}
   group
+  transition-colors
 `;
 
 const Input = tw.input`

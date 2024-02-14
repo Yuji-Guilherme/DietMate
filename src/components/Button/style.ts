@@ -47,6 +47,9 @@ const ButtonMdOutlined = tw.button`
 const FormBlueButton = tw.button`
   h-9
   w-11/12
+  flex
+  items-center
+  justify-center
   font-semibold
   rounded-lg
   bg-primary-blue
@@ -55,7 +58,10 @@ const FormBlueButton = tw.button`
   hover:bg-secondary-blue
   focus:text-zinc-100
   focus:bg-secondary-blue
+  disabled:bg-zinc-400
+  disabled:cursor-progress
   transition-colors
+  gap-3
 `;
 
 const formGrayButtonClassName = `h-9 flex items-center justify-center rounded-lg text-off-white hover:text-zinc-100 focus:text-zinc-100 transition-colors w-5/6 bg-zinc-400 hover:bg-zinc-500 focus:bg-zinc-500`;
@@ -66,6 +72,18 @@ const formNoBgBlueClassName = `${formNoBgButtonBaseClassName} text-sky-500 hover
 
 const formNoBgGrayClassName = `${formNoBgButtonBaseClassName} text-zinc-400 hover:text-zinc-500 focus:outline-zinc-300`;
 
+const formLoadCircle = tw.circle`
+  w-4
+  h-4
+  rounded-full
+  bg-transparent
+  border-solid
+  border-3
+  border-off-white
+  border-t-transparent
+  animate-spin
+`;
+
 export {
   buttonMdClassName,
   ButtonMd,
@@ -74,5 +92,6 @@ export {
   FormBlueButton,
   formGrayButtonClassName,
   formNoBgBlueClassName,
-  formNoBgGrayClassName
+  formNoBgGrayClassName,
+  formLoadCircle
 };

@@ -3,20 +3,26 @@
 import Link from 'next/link';
 import { useLoginForm } from './hook';
 import { LoginInput } from './LoginInput';
-import { FormButton, formButtonClassName } from '@/components/Button';
+import {
+  FormButton,
+  FormLoadCircle,
+  formButtonClassName
+} from '@/components/Button';
 import { Form } from '@/components/Form';
 
 import * as S from './style';
 
 function LoginForm() {
-  const { register, handleSubmit } = useLoginForm();
+  const { register, handleSubmit, useHandleLogin, isError, fetchLoad } =
+    useLoginForm();
 
   return (
-    <Form.Root onSubmit={handleSubmit((data) => console.log(data))}>
+    <Form.Root onSubmit={handleSubmit(useHandleLogin)}>
       <Form.Title>Entrar</Form.Title>
       <Form.FieldWrapper>
         <Form.Field>
           <LoginInput
+            hasError={isError}
             placeholder="digite um nome de usuário"
             label="Nome de usuário"
             buttonType="user"
@@ -25,6 +31,7 @@ function LoginForm() {
         </Form.Field>
         <Form.Field>
           <LoginInput
+            hasError={isError}
             type="password"
             placeholder="digite uma senha"
             label="Nova senha"
@@ -34,7 +41,10 @@ function LoginForm() {
         </Form.Field>
       </Form.FieldWrapper>
       <S.ButtonWrapper className="gap-6">
-        <FormButton.blue type="submit">Entrar</FormButton.blue>
+        <FormButton.blue disabled={fetchLoad} type="submit">
+          {fetchLoad && <FormLoadCircle />}
+          Entrar
+        </FormButton.blue>
         <Link className={formButtonClassName.noBgGray} href="/dashboard">
           Entrar como visitante
         </Link>

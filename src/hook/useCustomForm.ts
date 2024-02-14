@@ -13,13 +13,20 @@ const useCustomForm = ({ schema, mode }: UseCustomFormParams) => {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors, touchedFields }
   } = useForm<FormProps>({
     mode,
     resolver: zodResolver(schema)
   });
 
-  return { register, handleSubmit, errors, touchedFields };
+  return {
+    register,
+    handleSubmit,
+    errors,
+    touchedFields,
+    watch
+  };
 };
 
 export { useCustomForm };

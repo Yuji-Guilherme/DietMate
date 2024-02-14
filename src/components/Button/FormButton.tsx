@@ -14,10 +14,12 @@ const FormButton: Record<FormButtonType, TailwindButton> = {
   blue: S.FormBlueButton
 };
 
+const FormLoadCircle = S.formLoadCircle;
+
 const formButtonClassName: Record<LinkedFormButtonType, string> = {
   gray: S.formGrayButtonClassName,
   noBgGray: S.formNoBgGrayClassName,
   noBgBlue: S.formNoBgBlueClassName
 };
 
-export { FormButton, formButtonClassName };
+export { FormButton, formButtonClassName, FormLoadCircle };

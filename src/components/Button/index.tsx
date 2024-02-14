@@ -1,4 +1,10 @@
 import { Button, buttonClassName } from './DefaultButton';
-import { FormButton, formButtonClassName } from './FormButton';
+import { FormButton, formButtonClassName, FormLoadCircle } from './FormButton';
 
-export { Button, buttonClassName, FormButton, formButtonClassName };
+export {
+  Button,
+  buttonClassName,
+  FormButton,
+  formButtonClassName,
+  FormLoadCircle
+};

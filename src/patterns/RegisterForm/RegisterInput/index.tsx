@@ -13,18 +13,22 @@ type RegisterInputProps = {
 
 const RegisterInput = forwardRef<HTMLInputElement, RegisterInputProps>(
   ({ label, errorText, touched, buttonType, type = 'text', ...rest }, ref) => {
-    const { inputId, inputType, handleChangeInputType } = useRegisterInput({
-      type
-    });
-
-    const hasError = !!errorText;
-    const isCorrectly = !hasError && !!touched;
+    const { inputId, inputType, hasError, isCorrectly, handleChangeInputType } =
+      useRegisterInput({
+        type,
+        errorText,
+        touched
+      });
 
     return (
       <>
         <Input.Label htmlFor={inputId}>{label}</Input.Label>
         <Input.Wrapper tabIndex={-1} isValid={isCorrectly} hasError={hasError}>
-          <Input.Button type={buttonType} onClick={handleChangeInputType} />
+          <Input.Button
+            type={buttonType}
+            inputType={inputType}
+            onClick={handleChangeInputType}
+          />
           <Input.Component id={inputId} type={inputType} ref={ref} {...rest} />
           {hasError && <Input.ErrorIcon />}
           {isCorrectly && <Input.CorrectIcon />}
