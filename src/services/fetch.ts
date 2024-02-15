@@ -1,16 +1,18 @@
 'use server';
 
-import { getCookies, setCookies } from '@/utils/nextCookies';
+import { getCookies, setCookies, clearCookies } from '@/utils/Cookies';
 
 const baseURL = process.env.NEXT_PUBLIC_API_URL;
+const registerUrl = `${baseURL}/user`;
+const loginUrl = `${baseURL}/auth`;
+const logoutUrl = `${baseURL}/auth/logout`;
+const refreshUrl = `${baseURL}/auth/refresh`;
 
 type FetchUrl = string | URL | Request;
 type FetchInit = RequestInit | undefined;
 
-const fetchRegister = async (url: FetchUrl, init: FetchInit) => {
-  const completeUrl = `${baseURL}/${url}`;
-
-  const resultData = await fetch(completeUrl, {
+const fetchRegister = async (init: FetchInit) => {
+  const resultData = await fetch(registerUrl, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -21,13 +23,11 @@ const fetchRegister = async (url: FetchUrl, init: FetchInit) => {
 
   if (!result.user) throw new Error('Error create user');
 
-  await fetchLogin('auth', { ...init });
+  await fetchLogin({ ...init });
 };
 
-const fetchLogin = async (url: FetchUrl, init: FetchInit) => {
-  const completeUrl = `${baseURL}/${url}`;
-
-  const resultData = await fetch(completeUrl, {
+const fetchLogin = async (init: FetchInit) => {
+  const resultData = await fetch(loginUrl, {
     method: 'POST',
     credentials: 'include',
     headers: {
@@ -45,7 +45,27 @@ const fetchLogin = async (url: FetchUrl, init: FetchInit) => {
   setCookies(fetchCookie);
 };
 
-const get = async (url: FetchUrl) => {
+const fetchLogout = async (init?: FetchInit) => {
+  const refreshToken = getCookies()[1];
+
+  const resultData = await fetch(logoutUrl, {
+    method: 'POST',
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json',
+      Cookie: refreshToken
+    },
+    ...init
+  });
+
+  const result = await resultData.json();
+
+  console.log(result);
+
+  clearCookies();
+};
+
+const get = async (url: FetchUrl, nextConfig?: NextFetchRequestConfig) => {
   const accessToken = getCookies()[0];
   const completeUrl = `${baseURL}/${url}`;
 
@@ -55,7 +75,8 @@ const get = async (url: FetchUrl) => {
       headers: {
         'Content-Type': 'application/json',
         Cookie: accessToken
-      }
+      },
+      next: nextConfig
     });
 
     const result = await resultData.json();
@@ -66,4 +87,24 @@ const get = async (url: FetchUrl) => {
   }
 };
 
-export { fetchRegister, fetchLogin, get };
+const getNewToken = async () => {
+  const refreshToken = getCookies()[1];
+
+  try {
+    const resultData = await fetch(refreshUrl, {
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+        Cookie: refreshToken
+      }
+    });
+
+    const fetchCookie = resultData.headers.getSetCookie();
+
+    setCookies(fetchCookie);
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export { fetchRegister, fetchLogin, fetchLogout, get, getNewToken };

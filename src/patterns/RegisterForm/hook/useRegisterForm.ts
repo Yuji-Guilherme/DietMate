@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { useCustomForm } from '@/hook/useCustomForm';
-import { mutationFn, onSuccess } from './registerMutationFns';
+import { mutationFn } from './registerMutationFns';
 import { registerSchema as schema } from '@/schemas/registerSchema';
+import { redirect } from 'next/navigation';
 
 type RegisterData = {
   username: string;
@@ -17,10 +18,9 @@ const useRegisterForm = () => {
       mode: 'onBlur'
     });
 
-  const { mutate, isError, isPending, reset } = useMutation({
+  const { mutate, isError, isSuccess, isPending, reset } = useMutation({
     mutationKey: ['register'],
-    mutationFn,
-    onSuccess
+    mutationFn
   });
 
   const useHandleRegister = async (data: RegisterData) => {
@@ -34,6 +34,12 @@ const useRegisterForm = () => {
       reset();
     }
   }, [usernameValue]);
+
+  useEffect(() => {
+    if (isSuccess) {
+      redirect('/dashboard');
+    }
+  }, [isSuccess]);
 
   const fetchErrorText = isError
     ? 'Nome de usuário não disponível.'

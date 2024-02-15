@@ -1,7 +1,9 @@
-import { useMutation } from '@tanstack/react-query';
 import { useCustomForm } from '@/hook/useCustomForm';
 import { loginSchema as schema } from '@/schemas/loginSchema';
-import { mutationFn, onSuccess } from './loginMutationFns';
+import { useMutation } from '@tanstack/react-query';
+import { mutationFn } from './loginMutationFns';
+import { redirect } from 'next/navigation';
+import { useEffect } from 'react';
 
 type LoginData = {
   username: string;
@@ -16,22 +18,31 @@ const useLoginForm = () => {
 
   const fiveSecondsInMilliseconds = 5000;
 
-  const onError = () => {
+  const onError = async () => {
     setTimeout(() => {
       reset();
     }, fiveSecondsInMilliseconds);
   };
 
-  const { mutate, isError, isPending, reset } = useMutation({
+  const { mutate, isError, isSuccess, isPending, reset } = useMutation({
     mutationKey: ['login'],
-    mutationFn,
-    onError,
-    onSuccess
+    mutationFn
   });
 
   const useHandleLogin = async (data: LoginData) => {
-    mutate({ username: data.username, password: data.password });
+    mutate(
+      { username: data.username, password: data.password },
+      {
+        onError
+      }
+    );
   };
+
+  useEffect(() => {
+    if (isSuccess) {
+      redirect('/dashboard');
+    }
+  }, [isSuccess]);
 
   return {
     register,
