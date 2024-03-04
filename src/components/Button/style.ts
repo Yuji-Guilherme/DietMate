@@ -64,7 +64,7 @@ const FormBlueButton = tw.button`
   gap-3
 `;
 
-const formGrayButtonClassName = `h-9 flex items-center justify-center rounded-lg text-off-white hover:text-zinc-100 focus:text-zinc-100 transition-colors w-5/6 bg-zinc-400 hover:bg-zinc-500 focus:bg-zinc-500`;
+const formGrayButtonClassName = `h-9 flex items-center justify-center rounded-lg text-off-white hover:text-zinc-100 focus:text-zinc-100 transition-colors w-5/6 bg-zinc-500 hover:bg-zinc-500 focus:bg-zinc-500`;
 
 const formNoBgButtonBaseClassName = 'text-sm transition-colors focus:outline-1';
 

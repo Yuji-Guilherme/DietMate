@@ -1,17 +1,17 @@
 import { Logo } from '@/components/Logo';
-import { RegisterForm } from '@/patterns/RegisterForm';
+import { LoginForm } from '@/patterns/LoginForm';
 
-import * as S from './style';
+import * as S from '@/screens/Form/style';
 
-function Register() {
+function Login() {
   return (
     <S.Main>
       <S.Section>
         <Logo type="lg" />
-        <RegisterForm />
+        <LoginForm />
       </S.Section>
     </S.Main>
   );
 }
 
-export { Register };
+export { Login };

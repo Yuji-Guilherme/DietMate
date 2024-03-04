@@ -1,10 +1,7 @@
-import { Footer } from '@/patterns/Footer';
-import { Login as LoginScreen } from '@/screens/Login';
-import { verifyLoggedAndRedirect } from '@/utils/Cookies';
+import { Footer } from '@/components/Footer';
+import { Login as LoginScreen } from '@/screens/Form/Login';
 
 export default function Login() {
-  verifyLoggedAndRedirect();
-
   return (
     <>
       <LoginScreen />

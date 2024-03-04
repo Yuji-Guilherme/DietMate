@@ -1,10 +1,15 @@
 import { cookies } from 'next/headers';
 
 const getCookies = () => {
-  const nextCookies = cookies().getAll();
+  const nextTokenCookie = cookies().get('token');
+  const nextRefreshCookie = cookies().get('refresh');
 
-  const tokenCookie = `${nextCookies[0].name}=${nextCookies[0].value}`;
-  const refreshCookie = `${nextCookies[1].name}=${nextCookies[1].value}`;
+  const tokenCookie = nextTokenCookie?.value
+    ? `${nextTokenCookie.name}=${nextTokenCookie.value}`
+    : '';
+  const refreshCookie = nextRefreshCookie?.value
+    ? `${nextRefreshCookie.name}=${nextRefreshCookie.value}`
+    : '';
 
   return [tokenCookie, refreshCookie];
 };

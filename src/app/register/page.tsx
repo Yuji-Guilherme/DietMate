@@ -1,10 +1,7 @@
-import { Footer } from '@/patterns/Footer';
-import { Register as RegisterScreen } from '@/screens/Register';
-import { verifyLoggedAndRedirect } from '@/utils/Cookies';
+import { Footer } from '@/components/Footer';
+import { Register as RegisterScreen } from '@/screens/Form/Register';
 
 export default function Register() {
-  verifyLoggedAndRedirect();
-
   return (
     <>
       <RegisterScreen />

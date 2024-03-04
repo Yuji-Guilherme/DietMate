@@ -27,4 +27,27 @@ const Ul = tw.ul`
   gap-1
 `;
 
-export { Aside, Nav, Ul };
+const UserText = tw.p`
+  overflow-hidden
+  text-ellipsis
+  w-3/4
+`;
+
+const ExitButtonWrapper = tw.div`
+  w-full
+  mt-auto
+  flex
+  items-center
+  pl-10
+  pr-6
+`;
+
+const ExitButton = tw.button`
+  flex
+  items-center
+  gap-2
+  text-off-white
+  text-sm
+`;
+
+export { Aside, Nav, Ul, UserText, ExitButtonWrapper, ExitButton };

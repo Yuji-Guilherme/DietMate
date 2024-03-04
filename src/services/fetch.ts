@@ -1,6 +1,6 @@
 'use server';
 
-import { getCookies, setCookies, clearCookies } from '@/utils/Cookies';
+import { getCookies, setCookies, clearCookies } from '@/utils/cookies';
 
 const baseURL = process.env.NEXT_PUBLIC_API_URL;
 const registerUrl = `${baseURL}/user`;
@@ -48,7 +48,7 @@ const fetchLogin = async (init: FetchInit) => {
 const fetchLogout = async (init?: FetchInit) => {
   const refreshToken = getCookies()[1];
 
-  const resultData = await fetch(logoutUrl, {
+  await fetch(logoutUrl, {
     method: 'POST',
     credentials: 'include',
     headers: {
@@ -57,10 +57,6 @@ const fetchLogout = async (init?: FetchInit) => {
     },
     ...init
   });
-
-  const result = await resultData.json();
-
-  console.log(result);
 
   clearCookies();
 };
@@ -92,6 +88,7 @@ const getNewToken = async () => {
 
   try {
     const resultData = await fetch(refreshUrl, {
+      method: 'POST',
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
