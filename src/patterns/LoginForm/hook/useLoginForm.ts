@@ -3,7 +3,7 @@ import { loginSchema as schema } from '@/schemas/loginSchema';
 import { useMutation } from '@tanstack/react-query';
 import { mutationFn } from './loginMutationFns';
 import { redirect } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, useRef, type KeyboardEvent } from 'react';
 
 type LoginData = {
   username: string;
@@ -11,23 +11,24 @@ type LoginData = {
 };
 
 const useLoginForm = () => {
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const fiveSecondsInMilliseconds = 5000;
+
   const { register, handleSubmit } = useCustomForm({
     schema,
     mode: 'onSubmit'
   });
 
-  const fiveSecondsInMilliseconds = 5000;
+  const { mutate, isError, isSuccess, isPending, reset } = useMutation({
+    mutationKey: ['login'],
+    mutationFn
+  });
 
   const onError = async () => {
     setTimeout(() => {
       reset();
     }, fiveSecondsInMilliseconds);
   };
-
-  const { mutate, isError, isSuccess, isPending, reset } = useMutation({
-    mutationKey: ['login'],
-    mutationFn
-  });
 
   const useHandleLogin = async (data: LoginData) => {
     mutate(
@@ -44,12 +45,21 @@ const useLoginForm = () => {
     }
   }, [isSuccess]);
 
+  const handlePressEnter = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      buttonRef.current?.click();
+    }
+  };
+
   return {
     register,
     handleSubmit,
     useHandleLogin,
     isError,
-    fetchLoad: isPending
+    fetchLoad: isPending,
+    buttonRef,
+    handlePressEnter
   };
 };
 

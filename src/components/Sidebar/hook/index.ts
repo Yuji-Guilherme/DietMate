@@ -1,4 +1,5 @@
 import { useRouter } from 'next/navigation';
+import { clearLocalStorage } from '@/utils/localStorage';
 
 type UseExitProps = {
   fetchFn: () => Promise<void>;
@@ -11,6 +12,7 @@ const useExit = ({ fetchFn, userIsLoggedFn }: UseExitProps) => {
   const handleCloseButton = async () => {
     const userLoginState = await userIsLoggedFn();
     if (userLoginState) await fetchFn();
+    clearLocalStorage();
     router.push('/');
   };
 

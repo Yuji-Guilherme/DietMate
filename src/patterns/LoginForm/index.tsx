@@ -13,8 +13,15 @@ import { Form } from '@/components/Form';
 import * as S from './style';
 
 function LoginForm() {
-  const { register, handleSubmit, useHandleLogin, isError, fetchLoad } =
-    useLoginForm();
+  const {
+    register,
+    handleSubmit,
+    useHandleLogin,
+    isError,
+    fetchLoad,
+    buttonRef,
+    handlePressEnter
+  } = useLoginForm();
 
   return (
     <Form.Root onSubmit={handleSubmit(useHandleLogin)}>
@@ -26,6 +33,7 @@ function LoginForm() {
             placeholder="digite um nome de usuário"
             label="Nome de usuário"
             buttonType="user"
+            onKeyDown={handlePressEnter}
             {...register('username')}
           />
         </Form.Field>
@@ -36,12 +44,13 @@ function LoginForm() {
             placeholder="digite uma senha"
             label="Nova senha"
             buttonType="eye"
+            onKeyDown={handlePressEnter}
             {...register('password')}
           />
         </Form.Field>
       </Form.FieldWrapper>
       <S.ButtonWrapper className="gap-6">
-        <FormButton.blue disabled={fetchLoad} type="submit">
+        <FormButton.blue disabled={fetchLoad} ref={buttonRef} type="submit">
           {fetchLoad && <FormLoadCircle />}
           Entrar
         </FormButton.blue>

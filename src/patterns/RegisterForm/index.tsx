@@ -18,7 +18,9 @@ function RegisterForm() {
     touchedFields,
     useHandleRegister,
     usernameErrorText,
-    fetchLoad
+    fetchLoad,
+    buttonRef,
+    handlePressEnter
   } = useRegisterForm();
 
   return (
@@ -54,12 +56,13 @@ function RegisterForm() {
             errorText={errors.confirmPassword?.message?.toString()}
             buttonType="eye"
             touched={touchedFields.confirmPassword}
+            onKeyDown={handlePressEnter}
             {...register('confirmPassword')}
           />
         </Form.Field>
       </Form.FieldWrapper>
       <Form.ButtonWrapper>
-        <FormButton.blue disabled={fetchLoad} type="submit">
+        <FormButton.blue disabled={fetchLoad} ref={buttonRef} type="submit">
           {fetchLoad && <FormLoadCircle />}
           Cadastrar
         </FormButton.blue>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="1.333361mm"
+   height="0.77852768mm"
+   viewBox="0 0 1.333361 0.77852768"
+   version="1.1"
+   id="svg1"
+   xml:space="preserve"
+   sodipodi:docname="fire-icon.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm" /><defs
+     id="defs1" /><g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="layer"
+     transform="translate(-24.204045,-16.296764)"><path
+       id="path1"
+       style="fill:none;stroke:#031818;stroke-width:0.16;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:label="path"
+       d="m 24.284045,16.995292 0.366536,-0.365528 0.285635,0.286367 0.481294,-0.481857 m 0.03998,0.280734 -0.02412,-0.295674 z m -0.319278,-0.338393 0.293771,0.04127 z"
+       sodipodi:nodetypes="cccczczccc"
+       inkscape:export-filename="arrow-to-up.svg"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" /></g></svg>

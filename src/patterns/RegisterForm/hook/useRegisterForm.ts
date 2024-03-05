@@ -1,9 +1,9 @@
-import { useEffect } from 'react';
+import { useEffect, useRef, type KeyboardEvent } from 'react';
+import { redirect } from 'next/navigation';
 import { useMutation } from '@tanstack/react-query';
 import { useCustomForm } from '@/hook/useCustomForm';
 import { mutationFn } from './registerMutationFns';
 import { registerSchema as schema } from '@/schemas/registerSchema';
-import { redirect } from 'next/navigation';
 
 type RegisterData = {
   username: string;
@@ -12,6 +12,7 @@ type RegisterData = {
 };
 
 const useRegisterForm = () => {
+  const buttonRef = useRef<HTMLButtonElement>(null);
   const { register, handleSubmit, errors, touchedFields, watch } =
     useCustomForm({
       schema,
@@ -48,6 +49,13 @@ const useRegisterForm = () => {
   const usernameErrorText =
     errors.username?.message?.toString() || fetchErrorText;
 
+  const handlePressEnter = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      buttonRef.current?.click();
+    }
+  };
+
   return {
     register,
     handleSubmit,
@@ -55,7 +63,9 @@ const useRegisterForm = () => {
     touchedFields,
     useHandleRegister,
     usernameErrorText,
-    fetchLoad: isPending
+    fetchLoad: isPending,
+    buttonRef,
+    handlePressEnter
   };
 };
 

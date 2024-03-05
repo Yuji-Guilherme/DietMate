@@ -11,11 +11,17 @@ const config: Config = {
   theme: {
     colors: {
       'off-white': '#F9F8D0',
+      'secondary-white': '#FFFEDD',
       'new-orange': '#FE9400',
+      'dark-orange': '#E16B16',
       'primary-blue': '#031818',
       'secondary-blue': '#072C2C',
+      'water-blue': '#24A5A5',
       'light-yellow': '#FFF2B0',
       'medium-yellow': '#F6EBB7',
+      'dark-yellow': '#ECE422',
+      'blue-gray': '#446969',
+      'new-red': '#D11616',
       ...colors
     },
     borderWidth: {
