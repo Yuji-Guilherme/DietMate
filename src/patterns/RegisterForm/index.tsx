@@ -64,7 +64,7 @@ function RegisterForm() {
       <Form.ButtonWrapper>
         <FormButton.blue disabled={fetchLoad} ref={buttonRef} type="submit">
           {fetchLoad && <FormLoadCircle />}
-          Cadastrar
+          {!fetchLoad && 'Cadastrar'}
         </FormButton.blue>
         <Link
           className={formButtonClassName.noBgBlue}

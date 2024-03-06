@@ -14,7 +14,7 @@
   body {
     @apply w-full h-screen bg-light-yellow;
 }
-  button, a {
+  button, a, label {
       cursor: pointer;
   }
   ol, ul {

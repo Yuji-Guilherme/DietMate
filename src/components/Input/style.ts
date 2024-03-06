@@ -52,6 +52,43 @@ const ErrorMessage = tw.p`
   text-red-500
 `;
 
+const InputLgWrapper = tw.div`
+  w-full
+  max-w-2xl
+  h-10
+  flex
+  items-center
+  bg-secondary-white
+  rounded-xl
+  px-4
+  gap-2
+`;
+
+const InputLg = tw.input`
+  w-full
+  px-1
+  bg-transparent
+  text-primary-blue
+  text-xs
+  focus:outline-none
+  placeholder:text-blue-gray
+`;
+
+const InputLgAddButton = tw.button`
+  text-primary-blue
+  w-4
+  h-4
+  text-xl
+  flex
+  items-center
+  justify-center
+`;
+
+const InputLgCloseButton = tw(InputLgAddButton)`
+  text-sm
+  font-semibold
+`;
+
 export {
   Label,
   InputWrapper,
@@ -59,5 +96,9 @@ export {
   iconClassName,
   errorPathClassName,
   correctPathClassName,
-  ErrorMessage
+  ErrorMessage,
+  InputLgWrapper,
+  InputLg,
+  InputLgAddButton,
+  InputLgCloseButton
 };

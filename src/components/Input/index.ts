@@ -1,6 +1,7 @@
 import { InputButton } from './Button';
 import { ErrorIcon } from './ErrorIcon';
 import { CorrectIcon } from './CorrectIcon';
+import { InputLg } from './Lg';
 
 import * as S from './style';
 
@@ -11,7 +12,8 @@ const Input = {
   Component: S.Input,
   ErrorIcon: ErrorIcon,
   CorrectIcon: CorrectIcon,
-  ErrorMessage: S.ErrorMessage
+  ErrorMessage: S.ErrorMessage,
+  Lg: InputLg
 };
 
 export { Input };

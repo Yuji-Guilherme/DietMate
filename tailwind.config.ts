@@ -12,6 +12,7 @@ const config: Config = {
     colors: {
       'off-white': '#F9F8D0',
       'secondary-white': '#FFFEDD',
+      'cream-white': '#F7F6D7',
       'new-orange': '#FE9400',
       'dark-orange': '#E16B16',
       'primary-blue': '#031818',
@@ -35,7 +36,12 @@ const config: Config = {
       'md-': { min: '769px', max: '1024px' },
       md: { min: '451px', max: '1024px' }
     },
-    extend: {}
+    extend: {
+      gridTemplateRows: {
+        card: '30px minmax(0, 1fr)',
+        'card-sm': '30px 1fr 1fr'
+      }
+    }
   },
   plugins: []
 };

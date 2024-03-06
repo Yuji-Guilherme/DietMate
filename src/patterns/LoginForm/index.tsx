@@ -52,7 +52,7 @@ function LoginForm() {
       <S.ButtonWrapper className="gap-6">
         <FormButton.blue disabled={fetchLoad} ref={buttonRef} type="submit">
           {fetchLoad && <FormLoadCircle />}
-          Entrar
+          {!fetchLoad && 'Entrar'}
         </FormButton.blue>
         <Link className={formButtonClassName.noBgGray} href="/dashboard">
           Entrar como visitante
